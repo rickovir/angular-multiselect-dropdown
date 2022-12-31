@@ -11,6 +11,16 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "paths": {
+      "ngx-mulstiselect-dropdown": [
+        "dist/ngx-mulstiselect-dropdown/ngx-mulstiselect-dropdown",
+        "dist/ngx-mulstiselect-dropdown"
+      ],
+      "ngx-multiselect-dropdown": [
+        "dist/ngx-multiselect-dropdown/ngx-multiselect-dropdown",
+        "dist/ngx-multiselect-dropdown"
+      ]
+    },
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,

@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -102,6 +105,37 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "ngx-multiselect-dropdown": {
+      "projectType": "library",
+      "root": "projects/ngx-multiselect-dropdown",
+      "sourceRoot": "projects/ngx-multiselect-dropdown/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-multiselect-dropdown/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-multiselect-dropdown/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-multiselect-dropdown/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-multiselect-dropdown/src/test.ts",
+            "tsConfig": "projects/ngx-multiselect-dropdown/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-multiselect-dropdown/karma.conf.js"
           }
         }
       }

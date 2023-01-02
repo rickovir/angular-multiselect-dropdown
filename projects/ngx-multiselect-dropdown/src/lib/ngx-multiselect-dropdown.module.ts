@@ -3,6 +3,7 @@ import { NgxMultiselectDropdownComponent } from './ngx-multiselect-dropdown.comp
 import { BoxComponent } from './component/box/box.component';
 import { MultiselectEditorComponent } from './component/multiselect-editor/multiselect-editor.component';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { CommonModule } from '@angular/common';
     MultiselectEditorComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     NgxMultiselectDropdownComponent

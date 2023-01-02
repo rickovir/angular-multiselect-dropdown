@@ -1,30 +1,18 @@
 <div class="multiselect-wrapper">
     <div class="common-action">
-        <div class="check-wrapper">
-            <input type="checkbox" value="yes" id="wp-comment-cookies-consent" />
-            <label for="wp-comment-cookies-consent">Select All</label>
+        <div class="check-wrapper" (click)="onSelectAllChecked()">
+            <input type="checkbox" [checked]="selectAll" />
+            <span>{{ selectAll ? 'Unselect All' : 'Select All' }}</span>
         </div>
         <div class="search-wrapper">
-            <input type="text" class="search-box" />
+            <input type="text" name="search-query" [(ngModel)]="searchQuery" class="search-box" placeholder="Search" />
         </div>
     </div>
 
     <div class="list-contain">
-        <div class="check-wrapper">
-            <input type="checkbox" value="yes" id="wp-comment-cookies-1" />
-            <label for="wp-comment-cookies-1">Select 1</label>
-        </div>
-        <div class="check-wrapper">
-            <input type="checkbox" value="yes" id="wp-comment-cookies-2" />
-            <label for="wp-comment-cookies-2">Select 2</label>
-        </div>
-        <div class="check-wrapper">
-            <input type="checkbox" value="yes" id="wp-comment-cookies-3" />
-            <label for="wp-comment-cookies-3">Select 3</label>
-        </div>
-        <div class="check-wrapper">
-            <input type="checkbox" value="yes" id="wp-comment-cookies-4" />
-            <label for="wp-comment-cookies-4">Select 4</label>
+        <div class="check-wrapper" *ngFor="let item of filteredData" (click)="onItemChecked(item)">
+            <input type="checkbox" [checked]="item.checked" />
+            <span>{{ item.text }}</span>
         </div>
     </div>
 </div>

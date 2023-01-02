@@ -1,4 +1,12 @@
 <div class="multiselect-dropdown">
-    <box (expand)="onExpand($event)"></box>
-    <multiselect-editor *ngIf="showList"></multiselect-editor>
+    <box 
+        [selectedData]="_selectedData"
+        [showLimit]="_settings.selectedItemShowLimit" 
+        (expand)="onExpand($event)">
+    </box>
+    <multiselect-editor 
+        *ngIf="showList" 
+        [dataSources]="_data"
+        (change)="onSelectedItem($event)">
+    </multiselect-editor>
 </div>

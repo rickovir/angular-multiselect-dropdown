@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { defaultSetting } from './model/default.data';
+import { defaultSetting, sampleData } from './model/default.data';
+import { ListItem } from './model/list-item.model';
 import { Settings } from './model/setting.model';
 
 @Component({
@@ -17,10 +18,10 @@ import { Settings } from './model/setting.model';
 })
 export class NgxMultiselectDropdownComponent implements ControlValueAccessor {
   _placeholder = 'Select';
-  _settings: Settings | undefined;
+  _settings: Settings = defaultSetting;
+  _data = sampleData;
+  _selectedData: Array<ListItem> = [];
   showList = false;
-
-  @Input() data = {};
   
   @Input() set placeholder(value: string) {
     if (value) {
@@ -39,6 +40,18 @@ export class NgxMultiselectDropdownComponent implements ControlValueAccessor {
     }
   }
 
+  @Input() set data(value: Array<any>) {
+    if(value) {
+
+    }
+    else {
+      this._data = [];
+    }
+  }
+
+  onChangeCallback = (data: any) => {};
+  onTouchedCallback = (data: any) => {};
+
   constructor() { }
 
   writeValue(obj: any): void {
@@ -46,11 +59,11 @@ export class NgxMultiselectDropdownComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+    this.onChangeCallback = fn;
   }
 
   registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+    this.onTouchedCallback = fn;
   }
 
   setDisabledState?(isDisabled: boolean): void {
@@ -61,4 +74,9 @@ export class NgxMultiselectDropdownComponent implements ControlValueAccessor {
     this.showList = event;
   }
 
+  onSelectedItem(event: Array<ListItem>) {
+    if(event && Array.isArray(event)) {
+      this._selectedData = event.filter(item => item.checked);
+    }
+  }
 }

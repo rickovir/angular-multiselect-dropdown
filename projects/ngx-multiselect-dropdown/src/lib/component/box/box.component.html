@@ -1,29 +1,14 @@
 <div class="box-field">
     <div class="box-field-list">
-        <div class="box-item">
-            <span>Test 1</span>
-            <span class="del">x</span>
-        </div>
-        <div class="box-item">
-            <span>Test 2</span>
-            <span class="del">x</span>
-        </div>
-        <div class="box-item">
-            <span>Test 3</span>
-            <span class="del">x</span>
-        </div>
-        <div class="box-item">
-            <span>Test 4</span>
-            <span class="del">x</span>
-        </div>
-        <div class="box-item">
-            <span>Test 5</span>
+        <span class="place-holder" *ngIf="!selectedData?.length">{{ placeholder }}</span>
+        <div class="box-item" *ngFor="let item of selectedDataLimit">
+            <span>{{ item.text }}</span>
             <span class="del">x</span>
         </div>
     </div>
 
     <div class="content-right">
-        <span class="indicator">+2</span>
+        <span class="indicator" *ngIf="showLimit > 1 && selectedData.length > showLimit">+{{ showLimit }}</span>
         <span class="dropdown-caret" [class.active]="isExpand" (click)="onExpand()"></span>
     </div>
 </div>
